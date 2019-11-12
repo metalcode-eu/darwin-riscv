@@ -14,6 +14,13 @@ packaged for Visual Studio Code:
 The Open On-Chip Debugger version for the Kendryte K210 is included.
 
 ## Prerequisites
+The RISCV compiler depends on the following libraries. 
+
+| library | description                                                       |
+|---------|-------------------------------------------------------------------|
+| isl     | Integer Set Library for the polyhedral model                      |
+| libmpc  | library for the arithmetic of high precision complex numbers      |
+
 <img src="https://raw.githubusercontent.com/metalcode-eu/darwin-riscv/master/images/Homebrew.png" alt="Homebrew" width="10%" style="float: right;">
 
 The Open On-Chip Debugger uses a USB debug probe. You need the USB-library 
