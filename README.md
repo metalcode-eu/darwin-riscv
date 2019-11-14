@@ -99,7 +99,7 @@ Compiled OpenOCD Kendryte version with support for SiPEED USB-JTAG/TTL probe.
 <img src="https://raw.githubusercontent.com/metalcode-eu/darwin-riscv/master/images/SiPEED_USB_JTAG_TTL.jpg" alt="SiPEED USB-JTAG/TTL" width="45%" float="left">
 <img src="https://raw.githubusercontent.com/metalcode-eu/darwin-riscv/master/images/Sipeed_MAix_BiT.png" alt="SiPEED MAix-Bit" width="45%" float="right">
 
-The OpenOCD configuration file for the Kendryte K210 
+The OpenOCD configuration file for the Kendryte K210 connected to the MAix-BiT development board. 
 ```openocd
 # SiPEED USB-JTAG/TTL 
 interface ftdi
