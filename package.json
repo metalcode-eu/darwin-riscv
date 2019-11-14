@@ -3,7 +3,7 @@
   "displayName": "darwin-riscv",
   "description": "GNU RISC-V toolchain for macOS",
   "icon": "images/RISCV.png",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "preview": true,
   "publisher": "metalcode-eu",
   "engines": {
@@ -24,7 +24,7 @@
             "string",
             "null"
           ],
-          "default": "${env:HOME}/.vscode/extensions/metalcode-eu.darwin-riscv-1.0.2/bin",
+          "default": "${env:HOME}/.vscode/extensions/metalcode-eu.darwin-riscv-1.0.3/bin",
           "description": "Path to RISC-V GNU toolchain binary files."
         },
         "riscv.include": {
@@ -32,7 +32,7 @@
             "string",
             "null"
           ],
-          "default": "${env:HOME}/.vscode/extensions/metalcode-eu.darwin-riscv-1.0.2/riscv64-unknown-elf/include",
+          "default": "${env:HOME}/.vscode/extensions/metalcode-eu.darwin-riscv-1.0.3/riscv64-unknown-elf/include",
           "description": "Path to GNU RISC-V toolchain header files."
         },
         "riscv.lib": {
@@ -40,7 +40,7 @@
             "string",
             "null"
           ],
-          "default": "${env:HOME}/.vscode/extensions/metalcode-eu.darwin-riscv-1.0.2/riscv64-unknown-elf/lib",
+          "default": "${env:HOME}/.vscode/extensions/metalcode-eu.darwin-riscv-1.0.3/riscv64-unknown-elf/lib",
           "description": "Path to GNU RISC-V toolchain library files."
         },
         "riscv.gdb": {
@@ -48,7 +48,7 @@
             "string",
             "null"
           ],
-          "default": "${env:HOME}/.vscode/extensions/metalcode-eu.darwin-riscv-1.0.2/bin/riscv64-unknown-elf-gdb",
+          "default": "${env:HOME}/.vscode/extensions/metalcode-eu.darwin-riscv-1.0.3/bin/riscv64-unknown-elf-gdb",
           "description": "Path to GNU RISC-V debugger."
         },
         "kendryte.openocd": {
@@ -56,7 +56,7 @@
             "string",
             "null"
           ],
-          "default": "${env:HOME}/.vscode/extensions/metalcode-eu.darwin-riscv-1.0.2/kendryte-openocd/bin/openocd",
+          "default": "${env:HOME}/.vscode/extensions/metalcode-eu.darwin-riscv-1.0.3/kendryte-openocd/bin/openocd",
           "description": "Path to Kendryte K210 Open On-Chip-Debugger."
         }
       }

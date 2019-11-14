@@ -14,12 +14,14 @@ packaged for Visual Studio Code:
 The Open On-Chip Debugger version for the Kendryte K210 is included.
 
 ## Prerequisites
-The RISCV compiler depends on the following libraries. 
+The RISC-V compiler depends on the following libraries. 
 
-| library | description                                                       |
-|---------|-------------------------------------------------------------------|
-| isl     | Integer Set Library for the polyhedral model                      |
-| libmpc  | library for the arithmetic of high precision complex numbers      |
+| library       | description                                                  |
+|---------------|--------------------------------------------------------------|
+| isl           | Integer Set Library for the polyhedral model                 |
+| libmpc        | library for the arithmetic of high precision complex numbers |
+| libusb        | library for USB access                                       |
+| libusb-compat | library for USB-JTAG access                                  |
 
 <img src="https://raw.githubusercontent.com/metalcode-eu/darwin-riscv/master/images/Homebrew.png" alt="Homebrew" width="10%" style="float: right;">
 
@@ -30,7 +32,7 @@ to install the 'libusb' library.
 See [Homebrew](https://brew.sh) for more information. 
 
 > /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"  
-> brew install libusb isl libmpc
+> brew install libusb libusb-compat isl libmpc
 
 # Install
 In Visual Studio Code goto extensions (shift+cmd+x), search for '*metalcode-eu*'
@@ -88,6 +90,47 @@ path:
 	@$(GDB) --version 
 	@echo
 	@$(OPENOCD) --version 
+```
+
+# Version 1.0.3
+Compiled OpenOCD Kendryte version with support for SiPEED USB-JTAG/TTL probe. 
+- Kendryte Open On-Chip Debugger For RISC-V v0.2.3 (2019-02-21)
+
+<img src="https://raw.githubusercontent.com/metalcode-eu/darwin-riscv/master/images/SiPEED_USB_JTAG_TTL.jpg" alt="SiPEED USB-JTAG/TTL" width="45%" float="left">
+<img src="https://raw.githubusercontent.com/metalcode-eu/darwin-riscv/master/images/Sipeed_MAix_BiT.png" alt="SiPEED MAix-Bit" width="45%" float="right">
+
+The OpenOCD configuration file for the Kendryte K210 
+```openocd
+# SiPEED USB-JTAG/TTL 
+interface ftdi
+ftdi_device_desc "Dual RS232"
+ftdi_vid_pid 0x0403 0x6010
+ftdi_channel 0
+ftdi_layout_init 0x0508 0x0f1b
+ftdi_layout_signal nTRST -data 0x0200 -noe 0x0100
+ftdi_layout_signal nSRST -data 0x0800 -noe 0x0400
+
+transport select jtag
+adapter_khz 3000
+
+# server port
+gdb_port 3333
+telnet_port 4444
+
+# add cpu target
+set _CHIPNAME riscv
+jtag newtap $_CHIPNAME cpu -irlen 5 -expected-id 0x04e4796b
+
+set _TARGETNAME $_CHIPNAME.cpu
+target create $_TARGETNAME riscv -chain-position $_TARGETNAME
+
+# command
+init
+if {[ info exists pulse_srst]} {
+  ftdi_set_signal nSRST 0
+  ftdi_set_signal nSRST z
+}
+halt
 ```
 
 # Version 1.0.2
