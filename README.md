@@ -31,8 +31,10 @@ to install the 'libusb' library.
 
 See [Homebrew](https://brew.sh) for more information. 
 
-> /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"  
-> brew install libusb libusb-compat isl libmpc
+```shell
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"  
+brew install libusb libusb-compat isl libmpc
+```
 
 # Install
 In Visual Studio Code goto extensions (shift+cmd+x), search for '*metalcode-eu*'
