@@ -105,13 +105,11 @@ The OpenOCD configuration file for the Kendryte K210 connected to the MAix-BiT d
 interface ftdi
 ftdi_device_desc "Dual RS232"
 ftdi_vid_pid 0x0403 0x6010
-ftdi_channel 0
 ftdi_layout_init 0x0508 0x0f1b
 ftdi_layout_signal nTRST -data 0x0200 -noe 0x0100
 ftdi_layout_signal nSRST -data 0x0800 -noe 0x0400
 
-transport select jtag
-adapter_khz 3000
+jtag_rclk 3000 
 
 # server port
 gdb_port 3333
@@ -128,6 +126,7 @@ target create $_TARGETNAME riscv -chain-position $_TARGETNAME
 init
 if {[ info exists pulse_srst]} {
   ftdi_set_signal nSRST 0
+  ftdi_set_signal nSRST 1
   ftdi_set_signal nSRST z
 }
 halt
